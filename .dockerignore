@@ -1,0 +1,44 @@
+# Entorno virtual
+venv/
+env/
+.env
+
+# Archivos de caché de Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.pytest_cache/
+
+# Archivos de distribución
+dist/
+build/
+*.egg-info/
+
+# Archivos de base de datos SQLite (se crearán en el volumen)
+*.db
+*.sqlite3
+
+# Archivos de logs
+logs/
+*.log
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Directorios de IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Archivos de Docker (no necesarios dentro del contenedor)
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Archivos de Git
+.git/
+.gitignore

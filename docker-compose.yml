@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  api:
+    build: .
+    container_name: dgii_api
+    restart: always
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./app:/app/app
+      - ./scripts:/app/scripts
+      - ./requirements.txt:/app/requirements.txt
+      - ./app.py:/app/app.py
+      - ./data:/app/data
+      - ./logs:/app/logs
+    environment:
+      - DB_TYPE=sqlite
+      - DB_PATH=/app/data/dgii_contribuyentes.db
+      - API_HOST=0.0.0.0
+      - API_PORT=5001
+      - UPDATE_HOUR=1
+      - UPDATE_MINUTE=0
+      - DGII_URL=https://www.dgii.gov.do/app/WebApps/Consultas/RNC/DGII_RNC.zip
+    networks:
+      - dgii_network
+
+  # Descomenta esta sección si deseas usar MySQL en lugar de SQLite
+  # db:
+  #   image: mysql:8.0
+  #   container_name: dgii_db
+  #   restart: always
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=rootpassword
+  #     - MYSQL_DATABASE=dgii
+  #     - MYSQL_USER=dgiiuser
+  #     - MYSQL_PASSWORD=dgiipassword
+  #   volumes:
+  #     - mysql_data:/var/lib/mysql
+  #   networks:
+  #     - dgii_network
+
+networks:
+  dgii_network:
+    driver: bridge
+
+# Descomenta esta sección si usas MySQL
+# volumes:
+#   mysql_data:
