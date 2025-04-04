@@ -24,13 +24,11 @@ from app.models import Contribuyente, ActualizacionDB
 from app.api import api_bp
 from app.admin import admin_bp
 from app.usuarios import usuarios_bp
-from app.swagger import swagger_bp
 
 # Registrar blueprints
 app.register_blueprint(api_bp, url_prefix='/api')
 app.register_blueprint(admin_bp, url_prefix='/admin')
 app.register_blueprint(usuarios_bp, url_prefix='/usuarios')
-app.register_blueprint(swagger_bp, url_prefix='/docs')
 
 # Configurar CORS para permitir solicitudes desde otros dominios
 from flask_cors import CORS
